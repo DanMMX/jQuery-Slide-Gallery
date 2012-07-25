@@ -63,8 +63,8 @@
 
 						position ++;
 
-						if(typeof buttonAction == "function")
-							buttonAction(position == $sliderIn.children().length -1 ? 0 : position);
+						if(typeof buttonAction == "function")							
+							buttonAction(position == $sliderIn.children().length -1 ? 0 : (position == $sliderIn.children().length ? 1 : position));
 						
 						if(position == $sliderIn.children().length){
 							$sliderIn.css({
@@ -86,7 +86,7 @@
 						position --;
 
 						if(typeof buttonAction == "function")
-							buttonAction(position == $sliderIn.children().length -1 ? 0 : position);
+							buttonAction(position == $sliderIn.children().length -1 ? 0 : (position == $sliderIn.children().length ? 1 : position));
 						
 						if(position < 0){						
 							position = $sliderIn.children().length - 1;
