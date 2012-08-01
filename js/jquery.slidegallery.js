@@ -45,6 +45,8 @@
 					$slidegallery.prepend($controls);
 				}
 
+				$controls.css({cursor: "pointer"});
+
 				if ( !data ){
 					$slidegallery.data(
 						"slidegallery", 
@@ -60,11 +62,20 @@
 				$right.click(function(){
 					if($($slidegallery).filter(":animated").length == 0){
 						var position = Math.round(parseInt($sliderIn.css("right")) / settings.width);
+						var children = $sliderIn.children().length;
+
+						if(typeof buttonAction == "function"){
+							var actualPosition = position;
+							if(actualPosition == children - 2)
+								actualPosition = -1;
+							if(actualPosition == children - 1)
+								actualPosition = 0;
+
+							actualPosition ++;
+							buttonAction(actualPosition)
+						}
 
 						position ++;
-
-						if(typeof buttonAction == "function")							
-							buttonAction(position == $sliderIn.children().length -1 ? 0 : (position == $sliderIn.children().length ? 1 : position));
 						
 						if(position == $sliderIn.children().length){
 							$sliderIn.css({
@@ -82,12 +93,19 @@
 				$left.click(function(){
 					if($($slidegallery).filter(":animated").length == 0){
 						var position = Math.round(parseInt($sliderIn.css("right")) / settings.width);
-
-						position --;
-
-						if(typeof buttonAction == "function")
-							buttonAction(position == $sliderIn.children().length -1 ? 0 : (position == $sliderIn.children().length ? 1 : position));
+						var children = $sliderIn.children().length;
 						
+						if(typeof buttonAction == "function"){
+							var actualPosition = position;
+							if(actualPosition == 0)
+								actualPosition = children - 1;
+
+							actualPosition --;
+							buttonAction(actualPosition)
+						}
+
+						position--;
+
 						if(position < 0){						
 							position = $sliderIn.children().length - 1;
 							$sliderIn.css({
