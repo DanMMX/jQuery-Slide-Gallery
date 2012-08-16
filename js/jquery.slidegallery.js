@@ -2,7 +2,7 @@
 	var methods = {
 		init : function( options ) {			
 			return this.each(function(){
-
+				
 				var settings = $.extend( $.fn.slidegallery.defaults, options);
 
 				var $slidegallery = $(this),
