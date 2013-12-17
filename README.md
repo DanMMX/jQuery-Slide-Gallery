@@ -1,4 +1,4 @@
-# jQuery-Slide-Gallery #
+# [jQuery-Slide-Gallery](http://danmmx.github.io/jQuery-ObjectValidate/) #
 Creates a horizontal slide gallery using css and jQuery.
 
 ## Usage ##
